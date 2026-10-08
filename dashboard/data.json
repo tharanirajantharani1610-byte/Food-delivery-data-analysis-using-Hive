@@ -1,0 +1,618 @@
+{
+  "generated_timestamp": "2026-10-06 21:44:10",
+  "etl_summary": {
+    "raw_records_extracted": 5240,
+    "cleaned_records_loaded": 5114,
+    "corrupt_records_filtered": 126
+  },
+  "kpis": {
+    "total_orders": 5114,
+    "total_revenue": 1776410.97,
+    "average_order_value": 411.49,
+    "unique_customers": 800,
+    "unique_restaurants": 32,
+    "cancellation_rate_pct": 10.36,
+    "average_delivery_time_mins": 41.7,
+    "average_rating": 4.29
+  },
+  "monthly_revenue": [
+    {
+      "month": "2024-01",
+      "revenue": 151958.47,
+      "orders": 376,
+      "growth_rate_pct": 0.0
+    },
+    {
+      "month": "2024-02",
+      "revenue": 146807.01,
+      "orders": 378,
+      "growth_rate_pct": -3.39
+    },
+    {
+      "month": "2024-03",
+      "revenue": 157109.06,
+      "orders": 363,
+      "growth_rate_pct": 7.02
+    },
+    {
+      "month": "2024-04",
+      "revenue": 148061.8,
+      "orders": 348,
+      "growth_rate_pct": -5.76
+    },
+    {
+      "month": "2024-05",
+      "revenue": 125381.23,
+      "orders": 330,
+      "growth_rate_pct": -15.32
+    },
+    {
+      "month": "2024-06",
+      "revenue": 143753.87,
+      "orders": 357,
+      "growth_rate_pct": 14.65
+    },
+    {
+      "month": "2024-07",
+      "revenue": 156543.38,
+      "orders": 375,
+      "growth_rate_pct": 8.9
+    },
+    {
+      "month": "2024-08",
+      "revenue": 159009.84,
+      "orders": 379,
+      "growth_rate_pct": 1.58
+    },
+    {
+      "month": "2024-09",
+      "revenue": 139139.07,
+      "orders": 348,
+      "growth_rate_pct": -12.5
+    },
+    {
+      "month": "2024-10",
+      "revenue": 136452.27,
+      "orders": 346,
+      "growth_rate_pct": -1.93
+    },
+    {
+      "month": "2024-11",
+      "revenue": 139512.74,
+      "orders": 334,
+      "growth_rate_pct": 2.24
+    },
+    {
+      "month": "2024-12",
+      "revenue": 172682.23,
+      "orders": 383,
+      "growth_rate_pct": 23.78
+    }
+  ],
+  "category_performance": [
+    {
+      "category": "Pizza",
+      "revenue": 372018.84,
+      "orders": 549,
+      "quantity": 978,
+      "avg_rating": 4.31
+    },
+    {
+      "category": "Biryani",
+      "revenue": 298461.68,
+      "orders": 541,
+      "quantity": 950,
+      "avg_rating": 4.27
+    },
+    {
+      "category": "Fast Food",
+      "revenue": 247781.32,
+      "orders": 559,
+      "quantity": 952,
+      "avg_rating": 4.24
+    },
+    {
+      "category": "Indian",
+      "revenue": 233450.0,
+      "orders": 534,
+      "quantity": 935,
+      "avg_rating": 4.28
+    },
+    {
+      "category": "Burger",
+      "revenue": 197741.45,
+      "orders": 548,
+      "quantity": 999,
+      "avg_rating": 4.26
+    },
+    {
+      "category": "Chinese",
+      "revenue": 183815.03,
+      "orders": 538,
+      "quantity": 954,
+      "avg_rating": 4.35
+    },
+    {
+      "category": "Beverages",
+      "revenue": 135302.63,
+      "orders": 547,
+      "quantity": 945,
+      "avg_rating": 4.27
+    },
+    {
+      "category": "Desserts",
+      "revenue": 107840.02,
+      "orders": 501,
+      "quantity": 846,
+      "avg_rating": 4.31
+    }
+  ],
+  "city_performance": [
+    {
+      "city": "Ahmedabad",
+      "revenue": 250759.16,
+      "orders": 578,
+      "avg_delivery_time": 41.9
+    },
+    {
+      "city": "Delhi",
+      "revenue": 236900.23,
+      "orders": 564,
+      "avg_delivery_time": 41.3
+    },
+    {
+      "city": "Mumbai",
+      "revenue": 226106.44,
+      "orders": 540,
+      "avg_delivery_time": 41.8
+    },
+    {
+      "city": "Pune",
+      "revenue": 222609.16,
+      "orders": 567,
+      "avg_delivery_time": 41.8
+    },
+    {
+      "city": "Bangalore",
+      "revenue": 217030.75,
+      "orders": 528,
+      "avg_delivery_time": 42.0
+    },
+    {
+      "city": "Chennai",
+      "revenue": 214215.86,
+      "orders": 530,
+      "avg_delivery_time": 41.6
+    },
+    {
+      "city": "Hyderabad",
+      "revenue": 212598.14,
+      "orders": 517,
+      "avg_delivery_time": 41.3
+    },
+    {
+      "city": "Kolkata",
+      "revenue": 196191.23,
+      "orders": 493,
+      "avg_delivery_time": 41.5
+    }
+  ],
+  "payment_methods": [
+    {
+      "method": "UPI",
+      "count": 2230,
+      "volume": 894931.8,
+      "percentage": 43.61
+    },
+    {
+      "method": "Cash",
+      "count": 1060,
+      "volume": 434543.02,
+      "percentage": 20.73
+    },
+    {
+      "method": "Credit Card",
+      "count": 941,
+      "volume": 396550.7,
+      "percentage": 18.4
+    },
+    {
+      "method": "Debit Card",
+      "count": 524,
+      "volume": 206144.33,
+      "percentage": 10.25
+    },
+    {
+      "method": "Wallet",
+      "count": 359,
+      "volume": 144672.48,
+      "percentage": 7.02
+    }
+  ],
+  "order_status_distribution": [
+    {
+      "status": "Delivered",
+      "count": 4317,
+      "percentage": 84.42
+    },
+    {
+      "status": "Cancelled",
+      "count": 530,
+      "percentage": 10.36
+    },
+    {
+      "status": "Pending",
+      "count": 267,
+      "percentage": 5.22
+    }
+  ],
+  "top_restaurants": [
+    {
+      "restaurant_name": "Ovenstory Pizza",
+      "revenue": 117251.92,
+      "orders": 174,
+      "avg_rating": 4.31
+    },
+    {
+      "restaurant_name": "La Pino'z Pizza",
+      "revenue": 98526.24,
+      "orders": 149,
+      "avg_rating": 4.3
+    },
+    {
+      "restaurant_name": "Pizza Hut",
+      "revenue": 84293.52,
+      "orders": 122,
+      "avg_rating": 4.3
+    },
+    {
+      "restaurant_name": "Bawarchi",
+      "revenue": 81286.89,
+      "orders": 151,
+      "avg_rating": 4.3
+    },
+    {
+      "restaurant_name": "Behrouz Biryani",
+      "revenue": 77261.39,
+      "orders": 137,
+      "avg_rating": 4.18
+    },
+    {
+      "restaurant_name": "Meghana Foods",
+      "revenue": 73985.86,
+      "orders": 136,
+      "avg_rating": 4.21
+    },
+    {
+      "restaurant_name": "Barbeque Nation",
+      "revenue": 72065.94,
+      "orders": 150,
+      "avg_rating": 4.25
+    },
+    {
+      "restaurant_name": "Domino's Pizza",
+      "revenue": 71947.16,
+      "orders": 104,
+      "avg_rating": 4.33
+    },
+    {
+      "restaurant_name": "Taco Bell",
+      "revenue": 67368.49,
+      "orders": 130,
+      "avg_rating": 4.25
+    },
+    {
+      "restaurant_name": "Paradise Biryani",
+      "revenue": 65927.54,
+      "orders": 117,
+      "avg_rating": 4.39
+    }
+  ],
+  "daily_orders": [
+    {
+      "date": "2024-12-18",
+      "orders": 17,
+      "revenue": 6154.09
+    },
+    {
+      "date": "2024-12-19",
+      "orders": 18,
+      "revenue": 8026.17
+    },
+    {
+      "date": "2024-12-20",
+      "orders": 10,
+      "revenue": 2594.47
+    },
+    {
+      "date": "2024-12-21",
+      "orders": 16,
+      "revenue": 7120.25
+    },
+    {
+      "date": "2024-12-22",
+      "orders": 17,
+      "revenue": 5361.45
+    },
+    {
+      "date": "2024-12-23",
+      "orders": 13,
+      "revenue": 5152.17
+    },
+    {
+      "date": "2024-12-24",
+      "orders": 14,
+      "revenue": 5467.27
+    },
+    {
+      "date": "2024-12-25",
+      "orders": 13,
+      "revenue": 7621.22
+    },
+    {
+      "date": "2024-12-26",
+      "orders": 8,
+      "revenue": 4804.61
+    },
+    {
+      "date": "2024-12-27",
+      "orders": 10,
+      "revenue": 4918.3
+    },
+    {
+      "date": "2024-12-28",
+      "orders": 11,
+      "revenue": 5387.57
+    },
+    {
+      "date": "2024-12-29",
+      "orders": 14,
+      "revenue": 5513.67
+    },
+    {
+      "date": "2024-12-30",
+      "orders": 11,
+      "revenue": 4431.99
+    },
+    {
+      "date": "2024-12-31",
+      "orders": 19,
+      "revenue": 10249.17
+    }
+  ],
+  "peak_hours": [
+    {
+      "hour": "08:00",
+      "orders": 88,
+      "revenue": 35190.71
+    },
+    {
+      "hour": "09:00",
+      "orders": 90,
+      "revenue": 39915.41
+    },
+    {
+      "hour": "10:00",
+      "orders": 106,
+      "revenue": 43259.34
+    },
+    {
+      "hour": "11:00",
+      "orders": 92,
+      "revenue": 37025.31
+    },
+    {
+      "hour": "12:00",
+      "orders": 613,
+      "revenue": 259804.08
+    },
+    {
+      "hour": "13:00",
+      "orders": 599,
+      "revenue": 226071.35
+    },
+    {
+      "hour": "14:00",
+      "orders": 595,
+      "revenue": 234810.98
+    },
+    {
+      "hour": "15:00",
+      "orders": 89,
+      "revenue": 40079.96
+    },
+    {
+      "hour": "16:00",
+      "orders": 91,
+      "revenue": 36129.74
+    },
+    {
+      "hour": "17:00",
+      "orders": 81,
+      "revenue": 30376.45
+    },
+    {
+      "hour": "18:00",
+      "orders": 93,
+      "revenue": 39543.91
+    },
+    {
+      "hour": "19:00",
+      "orders": 628,
+      "revenue": 253831.0
+    },
+    {
+      "hour": "20:00",
+      "orders": 607,
+      "revenue": 243343.92
+    },
+    {
+      "hour": "21:00",
+      "orders": 624,
+      "revenue": 257231.21
+    },
+    {
+      "hour": "22:00",
+      "orders": 624,
+      "revenue": 264047.06
+    },
+    {
+      "hour": "23:00",
+      "orders": 94,
+      "revenue": 36181.9
+    }
+  ],
+  "customer_spending_tiers": [
+    {
+      "tier": "VIP (>= 3000)",
+      "count": 166,
+      "percentage": 20.83
+    },
+    {
+      "tier": "Regular (1500-2999)",
+      "count": 390,
+      "percentage": 48.93
+    },
+    {
+      "tier": "Occasional (< 1500)",
+      "count": 241,
+      "percentage": 30.24
+    }
+  ],
+  "delivery_speed_performance": [
+    {
+      "speed_bracket": "Ultra Fast (<= 25m)",
+      "orders": 741,
+      "avg_rating": 4.29
+    },
+    {
+      "speed_bracket": "On Time (26-40m)",
+      "orders": 1298,
+      "avg_rating": 4.31
+    },
+    {
+      "speed_bracket": "Moderate (41-55m)",
+      "orders": 1348,
+      "avg_rating": 4.27
+    },
+    {
+      "speed_bracket": "Delayed (> 55m)",
+      "orders": 930,
+      "avg_rating": 4.28
+    }
+  ],
+  "top_items": [
+    {
+      "item_name": "Crispy Chicken Bucket",
+      "category": "Fast Food",
+      "total_quantity": 281
+    },
+    {
+      "item_name": "Fiery Paneer Burger",
+      "category": "Burger",
+      "total_quantity": 260
+    },
+    {
+      "item_name": "Schezwan Veg Momos",
+      "category": "Chinese",
+      "total_quantity": 260
+    },
+    {
+      "item_name": "Farmhouse Supreme",
+      "category": "Pizza",
+      "total_quantity": 253
+    },
+    {
+      "item_name": "Pepperoni Feast",
+      "category": "Pizza",
+      "total_quantity": 250
+    },
+    {
+      "item_name": "Cold Coffee with Ice Cream",
+      "category": "Beverages",
+      "total_quantity": 247
+    },
+    {
+      "item_name": "Double Whopper",
+      "category": "Burger",
+      "total_quantity": 245
+    },
+    {
+      "item_name": "Veggie Delight Sub",
+      "category": "Fast Food",
+      "total_quantity": 242
+    },
+    {
+      "item_name": "Mutton Dum Biryani",
+      "category": "Biryani",
+      "total_quantity": 241
+    },
+    {
+      "item_name": "Crispy Veg Burger",
+      "category": "Burger",
+      "total_quantity": 238
+    }
+  ],
+  "top_customers": [
+    {
+      "customer_id": "CUST_0628",
+      "city": "Bangalore",
+      "orders": 14,
+      "total_spent": 8261.63
+    },
+    {
+      "customer_id": "CUST_0010",
+      "city": "Mumbai",
+      "orders": 11,
+      "total_spent": 6654.99
+    },
+    {
+      "customer_id": "CUST_0169",
+      "city": "Chennai",
+      "orders": 10,
+      "total_spent": 6535.19
+    },
+    {
+      "customer_id": "CUST_0798",
+      "city": "Hyderabad",
+      "orders": 12,
+      "total_spent": 6503.7
+    },
+    {
+      "customer_id": "CUST_0360",
+      "city": "Bangalore",
+      "orders": 11,
+      "total_spent": 6264.27
+    },
+    {
+      "customer_id": "CUST_0581",
+      "city": "Hyderabad",
+      "orders": 8,
+      "total_spent": 6256.42
+    },
+    {
+      "customer_id": "CUST_0302",
+      "city": "Mumbai",
+      "orders": 9,
+      "total_spent": 6070.53
+    },
+    {
+      "customer_id": "CUST_0014",
+      "city": "Chennai",
+      "orders": 8,
+      "total_spent": 5634.28
+    },
+    {
+      "customer_id": "CUST_0137",
+      "city": "Hyderabad",
+      "orders": 6,
+      "total_spent": 5613.84
+    },
+    {
+      "customer_id": "CUST_0067",
+      "city": "Ahmedabad",
+      "orders": 7,
+      "total_spent": 5589.4
+    }
+  ]
+}

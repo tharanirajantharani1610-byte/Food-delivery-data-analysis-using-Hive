@@ -1,0 +1,142 @@
+version: "3.8"
+
+# ==============================================================================
+# Food Delivery Data Analysis Using Apache Hive with Docker
+# ==============================================================================
+# Architecture:
+# - Completely Docker-based: No local Hadoop installation needed on Windows.
+# - Storage Layer: HDFS NameNode & DataNode (run entirely within containers).
+# - Metadata Layer: PostgreSQL container serving as the Hive Metastore database.
+# - Metastore Layer: Hive Metastore standalone daemon.
+# - Execution Layer: HiveServer2 & Hive CLI with volume mounts for data & scripts.
+# ==============================================================================
+
+services:
+  # ----------------------------------------------------------------------------
+  # 1. HDFS NameNode (Supporting service for Hive storage)
+  # ----------------------------------------------------------------------------
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    container_name: namenode
+    restart: unless-stopped
+    environment:
+      - CLUSTER_NAME=food_delivery_cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check=false
+    ports:
+      - "50070:50070"  # HDFS NameNode Web UI
+    volumes:
+      - namenode_data:/hadoop/dfs/name
+    networks:
+      - hive-network
+
+  # ----------------------------------------------------------------------------
+  # 2. HDFS DataNode (Supporting service for Hive blocks)
+  # ----------------------------------------------------------------------------
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: datanode
+    restart: unless-stopped
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check=false
+    ports:
+      - "50075:50075"  # HDFS DataNode Web UI
+    volumes:
+      - datanode_data:/hadoop/dfs/data
+    depends_on:
+      - namenode
+    networks:
+      - hive-network
+
+  # ----------------------------------------------------------------------------
+  # 3. PostgreSQL Database (External Metastore for Hive schemas)
+  # ----------------------------------------------------------------------------
+  hive-metastore-postgresql:
+    image: bde2020/hive-metastore-postgresql:2.3.0
+    container_name: hive-metastore-postgresql
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=metastore
+      - POSTGRES_USER=hive
+      - POSTGRES_PASSWORD=hive
+    ports:
+      - "5432:5432"
+    volumes:
+      - metastore_db_data:/var/lib/postgresql/data
+    networks:
+      - hive-network
+
+  # ----------------------------------------------------------------------------
+  # 4. Apache Hive Metastore Service
+  # ----------------------------------------------------------------------------
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    restart: unless-stopped
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070 datanode:50075 hive-metastore-postgresql:5432
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://hive-metastore-postgresql:5432/metastore
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName=org.postgresql.Driver
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName=hive
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword=hive
+      - HIVE_SITE_CONF_datanucleus_autoCreateSchema=false
+      - HIVE_SITE_CONF_hive_metastore_uris=thrift://hive-metastore:9083
+    ports:
+      - "9083:9083"  # Metastore Thrift Port
+    depends_on:
+      - namenode
+      - datanode
+      - hive-metastore-postgresql
+    networks:
+      - hive-network
+
+  # ----------------------------------------------------------------------------
+  # 5. Apache Hive Server & CLI (HiveServer2)
+  # ----------------------------------------------------------------------------
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    restart: unless-stopped
+    environment:
+      - SERVICE_PRECONDITION=hive-metastore:9083
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://hive-metastore-postgresql:5432/metastore
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName=org.postgresql.Driver
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName=hive
+      - HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword=hive
+      - HIVE_SITE_CONF_datanucleus_autoCreateSchema=false
+      - HIVE_SITE_CONF_hive_metastore_uris=thrift://hive-metastore:9083
+    ports:
+      - "10000:10000"  # HiveServer2 JDBC / Beeline port
+      - "10002:10002"  # HiveServer2 Web UI
+    volumes:
+      # Mount dataset directory from host into container
+      - ./data:/opt/data
+      # Mount HiveQL query scripts from host into container
+      - ./hive:/opt/hive-scripts
+    depends_on:
+      - hive-metastore
+    networks:
+      - hive-network
+
+# ------------------------------------------------------------------------------
+# Persistent Named Volumes
+# ------------------------------------------------------------------------------
+volumes:
+  namenode_data:
+    driver: local
+  datanode_data:
+    driver: local
+  metastore_db_data:
+    driver: local
+
+# ------------------------------------------------------------------------------
+# Internal Docker Network
+# ------------------------------------------------------------------------------
+networks:
+  hive-network:
+    driver: bridge
